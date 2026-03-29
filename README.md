@@ -2,7 +2,7 @@
 
 * This repository contains the Dockerized setup for the Roboshop microservices application. It utilizes a combination of official database images and custom-built microservices, all services are interconnected through a dedicated Docker network.
 
-# :clipboard: Pre-requisites
+# :toolbox: Pre-requisites
 
 * Docker Installation and it should be running.
 * A custom docker network roboshop should be created :
