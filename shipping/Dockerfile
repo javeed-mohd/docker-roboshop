@@ -1,5 +1,5 @@
 # FROM is used to mention the base OS of the image. It should be the first instruction in Dockerfile.
-FROM 
+FROM maven:3.5
 # This creates /app folder and move the files there.
 WORKDIR /app
 COPY pom.xml .
