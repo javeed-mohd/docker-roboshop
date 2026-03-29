@@ -67,7 +67,7 @@ docker build -t frontend:1.0.0 .
 docker run -d -p 80:80 --network roboshop --name frontend frontend:1.0.0
 ```
 
-# :green-tick-mark: Health checks and Verification
+# :white_check_mark: Health checks and Verification
 
 * All the components are healthy and running. You can verify the status of the containers by using:
 ```
