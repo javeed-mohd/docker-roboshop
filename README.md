@@ -5,7 +5,10 @@
 # Pre-requisites
 
 * Docker Installation and should be running.
-* A custom docker network roboshop should be created: docker network create roboshop
+* A custom docker network roboshop should be created :
+```
+docker network create roboshop
+```
 
 # Database Layer
 
