@@ -4,7 +4,7 @@
 
 # Pre-requisites
 
-* Docker Installation and should be running.
+* Docker Installation and it should be running.
 * A custom docker network roboshop should be created :
 ```
 docker network create roboshop
