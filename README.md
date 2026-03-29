@@ -1,4 +1,4 @@
-# Docker Infrastructure : Roboshop Project
+# :rocket: Docker Infrastructure : Roboshop Project
 
 * This repository contains the Dockerized setup for the Roboshop microservices application. It utilizes a combination of official database images and custom-built microservices, all services are interconnected through a dedicated Docker network.
 
