@@ -13,4 +13,6 @@
 
 ## MongoDB:7.0
 
-` docker run -d --network roboshop --name mongodb mongodb:1.0.0 `
+```bash
+docker run -d --network roboshop --name mongodb mongodb:1.0.0 
+```
