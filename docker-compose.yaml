@@ -1,0 +1,121 @@
+services:
+# Backend Components
+# Building and running Catalogue container
+  catalogue:
+    build: ./catalogue   # It moves to Catalogue directory
+    image: javeedmohd214/catalogue:1.0.0  # docker build -t javeedmohd214/catalogue:1.0.0
+    container_name: catalogue
+    environment:
+      MONGO: "true"
+      MONGO_URL: "mongodb://mongodb:27017/catalogue"
+    depends_on:
+    - mongodb
+
+# Building and running User container
+  user:
+    build: ./user       # It moves to User directory
+    image: javeedmohd214/user:1.0.0  # docker build -t javeedmohd214/user:1.0.0
+    container_name: user
+    environment:
+      MONGO: "true"
+      MONGO_URL: "mongodb://mongodb:27017/catalogue"
+      REDIS_URL: "redis://redis:6379"
+    depends_on:
+    - redis
+    - mongodb
+
+# Building and running Cart container
+  cart:
+    build: ./cart       # It moves to Cart directory
+    image: javeedmohd214/cart:1.0.0  # docker build -t javeedmohd214/cart:1.0.0
+    container_name: cart
+    environment:
+      REDIS_HOST: "redis"
+      CATALOGUE_HOST: "catalogue"
+      CATALOGUE_PORT: "8080"
+    depends_on:
+    - redis
+    - catalogue
+
+# Building and running Shipping container
+  shipping:
+    build: ./shipping    # It moves to Shipping directory
+    image: javeedmohd214/shipping:1.0.0  # docker build -t javeedmohd214/shipping:1.0.0
+    container_name: shipping
+    environment:
+      CART_ENDPOINT: "cart:8080"
+      DB_HOST: "mysql"
+    depends_on:
+    - mysql
+    - cart
+
+# Building and running Payment container
+  payment:
+    build: ./payment      # It moves to Payment directory
+    image: javeedmohd214/payment:1.0.0  # docker build -t javeedmohd214/payment:1.0.0
+    container_name: payment
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: "8080"
+      USER_HOST: "user"
+      USER_PORT: "8080"
+      AMQP_HOST: "rabbitmq"
+      AMQP_USER: "roboshop"
+      AMQP_PASS: "roboshop123"
+    depends_on:
+    - cart
+    - user
+    - rabbitmq
+
+# Frontend Service (Nginx)
+# Building and running Frontend container
+  frontend:
+    build: ./frontend       # It moves to Frontend directory
+    image: javeedmohd214/frontend:1.0.0  # docker build -t javeedmohd214/frontend:1.0.0
+    container_name: frontend
+    ports:
+    - "80:80"     # Host-port:Container-port, It should be accessed by th public.
+    depends_on:
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment
+
+# Database Components
+# Building and running MongoDB container
+  mongodb:
+    build: ./mongodb        # It moves to MongoDB directory
+    image: javeedmohd214/mongodb:1.0.0    # docker hub username/image-name --> docker build -t javeedmohd214/mongodb:1.0.0
+    container_name: mongodb
+  
+# Running Redis container
+  redis:
+    image: redis:7
+    container_name: redis
+
+# Running MySQL container
+  mysql:
+    build: ./mysql          # It moves to MySQL directory
+    image: javeedmohd214/mysql:1.0.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "RoboShop@1"
+
+# Running RabbitMQ container
+  rabbitmq:
+    image: rabbitmq:3
+    environment: 
+      RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_PASS: roboshop123
+    container_name: rabbitmq
+    ports:
+    - "5672:5672"
+    - "15672:15672"
+
+# Before running the image, we need to make sure custom bridge network is created.
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false     # If it is true, we need to create the network manually.
