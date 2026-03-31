@@ -8,7 +8,7 @@ COPY *.js .
 FROM node:20.20.2-alpine3.23
 # This creates /app folder and move the files there.
 WORKDIR /app
-EXPOSE=8080
+EXPOSE 8080
 COPY --from=builder /app /app
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
