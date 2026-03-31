@@ -82,7 +82,7 @@ services:
     - shipping
     - payment
 
-# Database Components
+# Databases
 # Building and running MongoDB container
   mongodb:
     build: ./mongodb        # It moves to MongoDB directory
