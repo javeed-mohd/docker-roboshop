@@ -29,13 +29,13 @@ docker run -d --network roboshop --name redis redis:7
 ## MySQL:8.0
 
 ```
-docker run -d --network roboshop -e MYSQL_ROOT_PASSWORD=RoboShop@1 -v "$(pwd)/shipping/db:/tmp/sql_files" --name mysql mysql:8.0
+docker run -d --network roboshop -e MYSQL_ROOT_PASSWORD=RoboShop@1 -v "$(pwd)/db:/tmp/sql_files" --name mysql mysql:8.0
 ```
 
 ## RabbitMQ:3.x
 
 ```
-docker run -d --network roboshop -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=roboshop -e RABBITMQ_DEFAULT_PASS=roboshop123 --name rabbitmq rabbitmq:3
+docker run -d --network roboshop -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=roboshop -e RABBITMQ_DEFAULT_PASS=roboshop123 --name rabbitmq rabbitmq:3-management
 ```
 
 # :gear: Backend Services
