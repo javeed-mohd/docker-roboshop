@@ -12,6 +12,11 @@ EXPOSE 8080
 COPY --from=builder /app /app
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
+# Adding the user
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+# Adding permissions
+RUN chown -R roboshop:roboshop /app
+USER roboshop
 CMD ["node", "server.js"]
 
 # # FROM is used to mention the base OS of the image. It should be the first instruction in Dockerfile.
