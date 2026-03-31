@@ -29,7 +29,7 @@ docker run -d --network roboshop --name redis redis:7
 ## MySQL:8.0
 
 ```
-docker run -d --network roboshop -e MYSQL_ROOT_PASSWORD=RoboShop@1 -v "$(pwd)/db:/tmp/sql_files" --name mysql mysql:8.0
+docker run -d --network roboshop --name mysql mysql:1.0.0
 ```
 
 ## RabbitMQ:3.x
