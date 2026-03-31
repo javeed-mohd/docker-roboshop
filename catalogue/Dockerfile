@@ -1,13 +1,18 @@
-FROM node:20.20.2-alpine3.23
+FROM node:20.20.2-alpine3.23 AS buider
 # This creates /app folder and move the files there.
 WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY *.js .
+
+FROM node:20.20.2-alpine3.23
+# This creates /app folder and move the files there.
+WORKDIR /app
+EXPOSE=8080
+COPY --from=builder /app /app
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
 CMD ["node", "server.js"]
-
 
 # # FROM is used to mention the base OS of the image. It should be the first instruction in Dockerfile.
 # FROM node:20
