@@ -17,7 +17,8 @@ RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 # Adding permissions
 RUN chown -R roboshop:roboshop /app
 USER roboshop
-CMD ["node", "server.js"]
+CMD ["server.js"]
+ENTRYPOINT ["node"]
 
 # # FROM is used to mention the base OS of the image. It should be the first instruction in Dockerfile.
 # FROM node:20
