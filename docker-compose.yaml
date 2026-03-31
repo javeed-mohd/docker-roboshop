@@ -93,7 +93,7 @@ services:
   
 # Running Redis container
   redis:
-    image: redis:7
+    image: redis:7.0
     container_name: redis
     volumes:
     - redis:/data
@@ -115,6 +115,9 @@ services:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
     container_name: rabbitmq
+    ports:
+    - "5672:5672"
+    - "15672:15672"
     volumes:
     - rabbitmq:/var/lib/rabbitmq
 
