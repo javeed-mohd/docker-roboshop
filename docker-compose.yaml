@@ -125,7 +125,7 @@ networks:
     name: roboshop
     external: false     # If it is true, we need to create the network manually.
 
-# We need to use volumes to keep the DATA, even containers are removed.
+# We need to use volumes to keep the DATA, even after containers are removed.
 volumes:
 # docker volume create component
   mongodb:
