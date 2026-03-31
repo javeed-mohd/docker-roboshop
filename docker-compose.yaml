@@ -109,9 +109,6 @@ services:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
     container_name: rabbitmq
-    ports:
-    - "5672:5672"
-    - "15672:15672"
 
 # Before running the image, we need to make sure custom bridge network is created.
 networks:

@@ -23,7 +23,7 @@ docker run -d --network roboshop --name mongodb mongodb:1.0.0
 ## Redis:7
 
 ```
-docker run -d -network roboshop --name redis redis:7
+docker run -d --network roboshop --name redis redis:7
 ```
 
 ## MySQL:8.0
