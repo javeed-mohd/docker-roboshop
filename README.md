@@ -20,10 +20,10 @@ docker network create roboshop
 docker run -d --network roboshop --name mongodb mongodb:1.0.0 
 ```
 
-## Redis:7
+## Redis:7.0
 
 ```
-docker run -d --network roboshop --name redis redis:7
+docker run -d --network roboshop --name redis redis:7.0
 ```
 
 ## MySQL:8.0
@@ -35,7 +35,7 @@ docker run -d --network roboshop --name mysql mysql:1.0.0
 ## RabbitMQ:3.x
 
 ```
-docker run -d --network roboshop -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=roboshop -e RABBITMQ_DEFAULT_PASS=roboshop123 --name rabbitmq rabbitmq:3-management
+docker run -d --network roboshop -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=roboshop -e RABBITMQ_DEFAULT_PASS=roboshop123 --name rabbitmq rabbitmq:3
 ```
 
 # :gear: Backend Services
