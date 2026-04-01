@@ -2,8 +2,8 @@ FROM node:20.20.2-alpine3.23 AS builder
 # This creates /app folder and move the files there.
 WORKDIR /app
 COPY package.json .
-RUN npm install
 COPY *.js .
+RUN npm install
 
 FROM node:20.20.2-alpine3.23
 # This creates /app folder and move the files there.
@@ -25,8 +25,8 @@ ENTRYPOINT ["node"]
 # # This creates /app folder and move the files there.
 # WORKDIR /app
 # COPY package.json .
-# RUN npm install
 # COPY *.js .
+# RUN npm install
 # ENV MONGO="true" \
 #     MONGO_URL="mongodb://mongodb:27017/catalogue"
 # CMD ["node", "server.js"]
