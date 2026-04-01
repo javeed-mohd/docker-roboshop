@@ -2,6 +2,7 @@
 FROM node:20
 # This creates /app folder and move the files there.
 WORKDIR /app
+# For Layering Purpose
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue" \
     REDIS_URL="redis://redis:6379"
